@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "394140116170",
+    "project_id": "ginder-981c4",
+    "storage_bucket": "ginder-981c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:394140116170:android:873cb7e9bd557a88af4033",
+        "android_client_info": {
+          "package_name": "com.manuelam.ginder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "394140116170-mh5eq5hjmc6eqb9un4t0jt8ck4meu0k6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUY8FPLjYva60LVSAb_uh_FWyiwui_eGY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "394140116170-mh5eq5hjmc6eqb9un4t0jt8ck4meu0k6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
