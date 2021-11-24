@@ -14,6 +14,7 @@ import 'package:tinder_app_flutter/ui/widgets/rounded_button.dart';
 import 'package:tinder_app_flutter/util/constants.dart';
 import 'package:tinder_app_flutter/util/utils.dart';
 import 'package:tinder_app_flutter/ui/screens/start_screen.dart';
+import 'package:tinder_app_flutter/ui/screens/register_sub_screens/add_phone_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String id = 'register_screen';
@@ -25,7 +26,7 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   final UserRegistration _userRegistration = UserRegistration();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final int _endScreenIndex = 3;
+  final int _endScreenIndex = 4;
   int _currentScreenIndex = 0;
   bool _isLoading = false;
   UserProvider _userProvider;
@@ -78,6 +79,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
             onPhotoChanged: (value) =>
                 {_userRegistration.localProfilePhotoPath = value});
       case 3:
+        return PhoneScreen(
+          onChanged: (value) => {_userRegistration.phone = value});
+      case 4:
         return EmailAndPasswordScreen(
             emailOnChanged: (value) => {_userRegistration.email = value},
             passwordOnChanged: (value) => {_userRegistration.password = value});
@@ -94,6 +98,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
         return (_userRegistration.age >= 13 && _userRegistration.age <= 120);
       case 2:
         return _userRegistration.localProfilePhotoPath.isNotEmpty;
+      case 3:
+        final regExNumero = RegExp(r'^\d{10}$');
+        return regExNumero.hasMatch(_userRegistration.phone);
       default:
         return false;
     }
@@ -107,6 +114,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
         return "Edad no valida";
       case 2:
         return "Foto no valida";
+      case 3:
+        return "Telefono no valido";
       default:
         return "";
     }
