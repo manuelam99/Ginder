@@ -35,7 +35,7 @@ class _AddPhotoScreenState extends State<AddPhotoScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            'Add photo',
+            'Foto de perfil',
             style: Theme.of(context).textTheme.headline3,
           ),
           Expanded(

@@ -66,24 +66,24 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Login to your account',
+                    'Accede a tu cuenta',
                     style: Theme.of(context).textTheme.headline3,
                   ),
                   SizedBox(height: 40),
                   BorderedTextField(
-                    labelText: 'Email',
+                    labelText: 'Correo',
                     keyboardType: TextInputType.emailAddress,
                     onChanged: (value) => _inputEmail = value,
                   ),
                   SizedBox(height: 5),
                   BorderedTextField(
-                    labelText: 'Password',
+                    labelText: 'Contraseña',
                     obscureText: true,
                     keyboardType: TextInputType.text,
                     onChanged: (value) => _inputPassword = value,
                   ),
                   Expanded(child: Container()),
-                  RoundedButton(text: 'LOGIN', onPressed: () => loginPressed())
+                  RoundedButton(text: 'Acceder', onPressed: () => loginPressed())
                 ],
               ),
             ),

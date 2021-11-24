@@ -136,20 +136,20 @@ class ChatScreen extends StatelessWidget {
                 textCapitalization: TextCapitalization.sentences,
                 style: TextStyle(color: kSecondaryColor),
                 decoration: InputDecoration(
-                    labelText: 'Message',
+                    labelText: 'Mensaje',
                     labelStyle:
                         TextStyle(color: kSecondaryColor.withOpacity(0.5)),
                     contentPadding: EdgeInsets.all(0)),
               ),
             ),
             RaisedButton(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(15),
               highlightElevation: 0,
               elevation: 0,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4)),
+                  borderRadius: BorderRadius.circular(1)),
               child: Text(
-                "SEND",
+                "Enviar",
                 style: Theme.of(context).textTheme.bodyText1,
               ),
               onPressed: () {

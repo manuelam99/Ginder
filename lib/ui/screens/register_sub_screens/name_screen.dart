@@ -15,11 +15,11 @@ class NameScreen extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                'My first',
+                'Mi primer',
                 style: Theme.of(context).textTheme.headline3,
               ),
               Text(
-                'name is',
+                'nombre es',
                 style: Theme.of(context).textTheme.headline3,
               ),
             ],
@@ -28,7 +28,7 @@ class NameScreen extends StatelessWidget {
         SizedBox(height: 25),
         Expanded(
           child: BorderedTextField(
-            labelText: 'Name',
+            labelText: 'Nombre',
             onChanged: onChanged,
             textCapitalization: TextCapitalization.words,
           ),

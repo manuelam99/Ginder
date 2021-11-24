@@ -14,22 +14,22 @@ class EmailAndPasswordScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'My Email and',
+          'Mi correo y',
           style: Theme.of(context).textTheme.headline3,
         ),
         Text(
-          'Password is',
+          'Contraseña son',
           style: Theme.of(context).textTheme.headline3,
         ),
         SizedBox(height: 25),
         BorderedTextField(
-          labelText: 'Email',
+          labelText: 'Correo',
           onChanged: emailOnChanged,
           keyboardType: TextInputType.emailAddress,
         ),
         SizedBox(height: 5),
         BorderedTextField(
-          labelText: 'Password',
+          labelText: 'Contraseña',
           onChanged: passwordOnChanged,
           obscureText: true,
         ),

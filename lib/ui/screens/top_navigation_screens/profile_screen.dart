@@ -52,7 +52,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             getBio(userSnapshot.data, userProvider),
                             Expanded(child: Container()),
                             RoundedButton(
-                                text: 'LOGOUT',
+                                text: 'LogOut',
                                 onPressed: () {
                                   logoutPressed(userProvider, context);
                                 })
@@ -91,7 +91,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         SizedBox(height: 5),
         Text(
-          user.bio.length > 0 ? user.bio : "No bio.",
+          user.bio.length > 0 ? user.bio : "Sin bio.",
           style: Theme.of(context).textTheme.bodyText1,
         ),
       ],

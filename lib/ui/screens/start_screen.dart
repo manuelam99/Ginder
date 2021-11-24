@@ -25,8 +25,8 @@ class StartScreen extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                      'Lorel ipsum dolor sit amet, consectetur adipiscing elit. '
-                      'Nulla in orci justo. Curabitur ac gravida quam.',
+                      'Encuentra tu compañer@ de juego ideal! '
+                      'No esperes mas!',
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
@@ -34,14 +34,14 @@ class StartScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 60),
                 RoundedButton(
-                    text: 'CREATE ACCOUNT',
+                    text: 'Regístrate',
                     onPressed: () {
                       Navigator.pop(context);
                       Navigator.pushNamed(context, RegisterScreen.id);
                     }),
                 SizedBox(height: 20),
                 RoundedOutlinedButton(
-                  text: 'LOGIN',
+                  text: 'Acceder',
                   onPressed: () => Navigator.pushNamed(context, LoginScreen.id),
                 ),
               ],
