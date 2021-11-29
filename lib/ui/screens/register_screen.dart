@@ -15,6 +15,7 @@ import 'package:tinder_app_flutter/util/constants.dart';
 import 'package:tinder_app_flutter/util/utils.dart';
 import 'package:tinder_app_flutter/ui/screens/start_screen.dart';
 import 'package:tinder_app_flutter/ui/screens/register_sub_screens/add_phone_screen.dart';
+import 'package:tinder_app_flutter/ui/screens/register_sub_screens/add_platform.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String id = 'register_screen';
@@ -26,7 +27,7 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   final UserRegistration _userRegistration = UserRegistration();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final int _endScreenIndex = 4;
+  final int _endScreenIndex = 5;
   int _currentScreenIndex = 0;
   bool _isLoading = false;
   UserProvider _userProvider;
@@ -75,13 +76,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
       case 1:
         return AgeScreen(onChanged: (value) => {_userRegistration.age = value});
       case 2:
+        return PlatformScreen(
+            onChanged: (value) => {_userRegistration.platform = value});
+      case 3:
         return AddPhotoScreen(
             onPhotoChanged: (value) =>
                 {_userRegistration.localProfilePhotoPath = value});
-      case 3:
-        return PhoneScreen(
-          onChanged: (value) => {_userRegistration.phone = value});
       case 4:
+        return PhoneScreen(
+            onChanged: (value) => {_userRegistration.phone = value});
+      case 5:
         return EmailAndPasswordScreen(
             emailOnChanged: (value) => {_userRegistration.email = value},
             passwordOnChanged: (value) => {_userRegistration.password = value});
@@ -97,8 +101,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
       case 1:
         return (_userRegistration.age >= 13 && _userRegistration.age <= 120);
       case 2:
-        return _userRegistration.localProfilePhotoPath.isNotEmpty;
+        return (_userRegistration.platform != "");
       case 3:
+        return _userRegistration.localProfilePhotoPath.isNotEmpty;
+      case 4:
         final regExNumero = RegExp(r'^\d{10}$');
         return regExNumero.hasMatch(_userRegistration.phone);
       default:
@@ -113,8 +119,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
       case 1:
         return "Edad no valida";
       case 2:
-        return "Foto no valida";
+        return "Favor de elegir plataforma";
       case 3:
+        return "Foto no valida";
+      case 4:
         return "Telefono no valido";
       default:
         return "";

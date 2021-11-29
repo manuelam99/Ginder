@@ -5,4 +5,5 @@ class UserRegistration {
   String password = '';
   String localProfilePhotoPath = '';
   String phone = '';
+  String platform = "";
 }

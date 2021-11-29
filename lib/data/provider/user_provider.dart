@@ -50,6 +50,7 @@ class UserProvider extends ChangeNotifier {
             name: userRegistration.name,
             age: userRegistration.age,
             number: userRegistration.phone,
+            platform: userRegistration.platform,
             profilePhotoPath: profilePhotoUrl);
         _databaseSource.addUser(user);
         SharedPreferencesUtil.setUserId(id);

@@ -39,7 +39,7 @@ class _AgeScreenState extends State<AgeScreen> {
           child: Center(
             child: Container(
               child: NumberPicker(
-                itemWidth: double.infinity,
+                  itemWidth: double.infinity,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.white, width: 2),
                     borderRadius: BorderRadius.circular(10),
