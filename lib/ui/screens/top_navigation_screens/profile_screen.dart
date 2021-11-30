@@ -33,7 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           vertical: 42.0,
           horizontal: 18.0,
         ),
-        margin: EdgeInsets.only(bottom: 40),
+        margin: EdgeInsets.only(bottom: 0),
         child: Consumer<UserProvider>(builder: (context, userProvider, child) {
           return FutureBuilder<AppUser>(
               future: userProvider.user,
@@ -50,9 +50,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 style: Theme.of(context).textTheme.headline4),
                             SizedBox(height: 40),
                             getBio(userSnapshot.data, userProvider),
+                            SizedBox(height: 20),
+                            getPlatform(userSnapshot.data, userProvider),
                             Expanded(child: Container()),
                             RoundedButton(
-                                text: 'LogOut',
+                                text: 'Log Out',
                                 onPressed: () {
                                   logoutPressed(userProvider, context);
                                 })
@@ -92,6 +94,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
         SizedBox(height: 5),
         Text(
           user.bio.length > 0 ? user.bio : "Sin bio.",
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+      ],
+    );
+  }
+
+  Widget getPlatform(AppUser user, UserProvider userProvider) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('Plataforma', style: Theme.of(context).textTheme.headline4),
+            RoundedIconButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (_) => InputDialog(
+                    onSavePressed: (value) =>
+                        userProvider.updateUserPlatform(value),
+                    labelText: 'Plataforma',
+                    startInputText: user.platform,
+                  ),
+                );
+              },
+              iconData: Icons.edit,
+              iconSize: 18,
+              paddingReduce: 4,
+            ),
+          ],
+        ),
+        SizedBox(height: 5),
+        Text(
+          user.platform != "" ? user.platform : "Sin plataforma",
           style: Theme.of(context).textTheme.bodyText1,
         ),
       ],

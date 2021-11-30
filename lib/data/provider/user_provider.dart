@@ -91,6 +91,12 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void updateUserPlatform(String newPlatform) {
+    _user.platform = newPlatform;
+    _databaseSource.updateUser(_user);
+    notifyListeners();
+  }
+
   Future<void> logoutUser() async {
     _user = null;
     await SharedPreferencesUtil.removeUserId();
