@@ -64,7 +64,9 @@ class _SwipeCardState extends State<SwipeCard> {
                   text: widget.person.name,
                   style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
                 ),
-                TextSpan(text: '  ${widget.person.age}', style: TextStyle(fontSize: 20)),
+                TextSpan(
+                    text: '  ${widget.person.age}',
+                    style: TextStyle(fontSize: 20)),
               ],
             )),
           ],
@@ -110,7 +112,7 @@ class _SwipeCardState extends State<SwipeCard> {
                   child: Text(
                     widget.person.bio.length > 0
                         ? widget.person.bio
-                        : "No bio.",
+                        : "Sin bio.",
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ),

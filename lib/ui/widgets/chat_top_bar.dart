@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tinder_app_flutter/data/db/entity/app_user.dart';
 import 'package:tinder_app_flutter/util/constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ChatTopBar extends StatelessWidget {
   final AppUser user;
@@ -35,7 +36,19 @@ class ChatTopBar extends StatelessWidget {
             ),
           ],
         ),
+        SizedBox(width: 5),
+        IconButton(onPressed: _hacerLlamada, icon: Icon(Icons.phone))
       ],
     );
+  }
+
+  _hacerLlamada() async {
+    var url = "tel:${user.number}";
+
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Hubo un error al llamar la URL';
+    }
   }
 }
