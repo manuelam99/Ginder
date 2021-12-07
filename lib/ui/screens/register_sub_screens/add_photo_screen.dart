@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tinder_app_flutter/ui/widgets/rounded_icon_button.dart';
 import 'package:tinder_app_flutter/ui/widgets/image_portrait.dart';
+import 'package:tinder_app_flutter/util/constants.dart';
 
 class AddPhotoScreen extends StatefulWidget {
   final Function(String) onPhotoChanged;
@@ -26,6 +27,42 @@ class _AddPhotoScreenState extends State<AddPhotoScreen> {
         _imagePath = pickedFile.path;
       });
     }
+
+    Navigator.pop(context);
+  }
+
+  Future pickImageFromCamera() async {
+    final pickedFile = await picker.getImage(source: ImageSource.camera);
+
+    if (pickedFile != null) {
+      widget.onPhotoChanged(pickedFile.path);
+
+      setState(() {
+        _imagePath = pickedFile.path;
+      });
+    }
+
+    Navigator.pop(context);
+  }
+
+  void pickImageSource(){
+    showModalBottomSheet(
+      context: context, 
+      builder: (BuildContext context){
+        return Container(
+          height: 100,
+          color: kColorPrimaryVariant,
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ElevatedButton(onPressed: pickImageFromGallery, child: Text("Galería")),
+                ElevatedButton(onPressed: pickImageFromCamera, child: Text("Cámara"))
+              ],
+            ),
+          ),
+        );
+      });
   }
 
   @override
@@ -58,7 +95,7 @@ class _AddPhotoScreenState extends State<AddPhotoScreen> {
                           alignment: Alignment.center,
                           child: _imagePath == null
                               ? RoundedIconButton(
-                                  onPressed: pickImageFromGallery,
+                                  onPressed: pickImageSource,
                                   iconData: Icons.add,
                                   iconSize: 20,
                                 )

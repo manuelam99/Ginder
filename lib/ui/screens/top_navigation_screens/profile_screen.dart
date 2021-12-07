@@ -152,6 +152,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           right: 0.0,
           bottom: 0.0,
           child: RoundedIconButton(
+            /*
             onPressed: () async {
               final pickedFile =
                   await ImagePicker().getImage(source: ImageSource.gallery);
@@ -160,11 +161,55 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     pickedFile.path, _scaffoldKey);
               }
             },
+            */
+            onPressed: ()=>pickImageSource(firebaseProvider),
             iconData: Icons.edit,
             iconSize: 18,
           ),
         ),
       ],
     );
+  }
+
+  Future pickImageFromGallery(UserProvider firebaseProvider) async {
+    final pickedFile = await ImagePicker().getImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+                firebaseProvider.updateUserProfilePhoto(
+                    pickedFile.path, _scaffoldKey);
+              }
+
+    Navigator.pop(context);
+  }
+
+  Future pickImageFromCamera(UserProvider firebaseProvider) async {
+    final pickedFile = await ImagePicker().getImage(source: ImageSource.camera);
+
+    if (pickedFile != null) {
+                firebaseProvider.updateUserProfilePhoto(
+                    pickedFile.path, _scaffoldKey);
+              }
+
+    Navigator.pop(context);
+  }
+
+  void pickImageSource(UserProvider firebaseProvider){
+    showModalBottomSheet(
+      context: context, 
+      builder: (BuildContext context){
+        return Container(
+          height: 100,
+          color: kColorPrimaryVariant,
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ElevatedButton(onPressed: ()=>pickImageFromGallery(firebaseProvider), child: Text("Galería")),
+                ElevatedButton(onPressed: ()=>pickImageFromCamera(firebaseProvider), child: Text("Cámara"))
+              ],
+            ),
+          ),
+        );
+      });
   }
 }
