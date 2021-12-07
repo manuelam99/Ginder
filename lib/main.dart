@@ -84,6 +84,7 @@ class MyApp extends StatelessWidget {
                     as Map)['user_id'],
               ),
         },
+        debugShowCheckedModeBanner: false,
       ),
     );
   }
