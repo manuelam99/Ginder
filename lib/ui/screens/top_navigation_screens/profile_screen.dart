@@ -30,7 +30,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       key: _scaffoldKey,
       body: Container(
         padding: EdgeInsets.symmetric(
-          vertical: 42.0,
+          vertical: 20.0,
           horizontal: 18.0,
         ),
         margin: EdgeInsets.only(bottom: 0),
@@ -52,6 +52,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             getBio(userSnapshot.data, userProvider),
                             SizedBox(height: 20),
                             getPlatform(userSnapshot.data, userProvider),
+                            SizedBox(height: 20),
+                            getGame(userSnapshot.data, userProvider),
                             Expanded(child: Container()),
                             RoundedButton(
                                 text: 'Log Out',
@@ -129,6 +131,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
         SizedBox(height: 5),
         Text(
           user.platform != "" ? user.platform : "Sin plataforma",
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+      ],
+    );
+  }
+
+  Widget getGame(AppUser user, UserProvider userProvider) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('Juego Favorito', style: Theme.of(context).textTheme.headline4),
+            RoundedIconButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (_) => InputDialog(
+                    onSavePressed: (value) =>
+                        userProvider.updateUserGame(value),
+                    labelText: 'Juego',
+                    startInputText: user.game,
+                  ),
+                );
+              },
+              iconData: Icons.edit,
+              iconSize: 18,
+              paddingReduce: 4,
+            ),
+          ],
+        ),
+        SizedBox(height: 5),
+        Text(
+          user.game != "" ? user.game : "Sin juego",
           style: Theme.of(context).textTheme.bodyText1,
         ),
       ],

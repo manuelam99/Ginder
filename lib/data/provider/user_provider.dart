@@ -98,6 +98,12 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void updateUserGame(String newGame) {
+    _user.game = newGame;
+    _databaseSource.updateUser(_user);
+    notifyListeners();
+  }
+
   Future<void> logoutUser() async {
     _user = null;
     await SharedPreferencesUtil.removeUserId();
