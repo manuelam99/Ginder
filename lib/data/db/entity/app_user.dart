@@ -7,6 +7,7 @@ class AppUser {
   int age;
   String number;
   String platform;
+  String game;
   String profilePhotoPath;
   String bio = "";
 
@@ -16,6 +17,7 @@ class AppUser {
       @required this.age,
       @required this.number,
       @required this.platform,
+      @required this.game,
       @required this.profilePhotoPath});
 
   AppUser.fromSnapshot(DocumentSnapshot snapshot) {
@@ -24,6 +26,7 @@ class AppUser {
     age = snapshot['age'];
     number = snapshot['number'];
     platform = snapshot['platform'];
+    game = snapshot['game'];
     profilePhotoPath = snapshot['profile_photo_path'];
     bio = snapshot.get('bio') ?? '';
   }
@@ -35,6 +38,7 @@ class AppUser {
       'age': age,
       'number': number,
       'platform': platform,
+      'game': game,
       'profile_photo_path': profilePhotoPath,
       'bio': bio
     };

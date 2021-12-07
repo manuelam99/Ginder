@@ -109,11 +109,22 @@ class _SwipeCardState extends State<SwipeCard> {
                     const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
                 child: Opacity(
                   opacity: 0.8,
-                  child: Text(
-                    widget.person.bio.length > 0
+                  child: Column(
+                    children: [
+                      Text(
+                        widget.person.bio.length > 0
                         ? widget.person.bio
                         : "Sin bio.",
-                    style: Theme.of(context).textTheme.bodyText1,
+                        style: Theme.of(context).textTheme.bodyText1),
+                      Text(
+                        "Plataforma: " + widget.person.platform
+                      ),
+                      Text(
+                        "Juego: " + widget.person.game
+                      )
+                    ],
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                   ),
                 ),
               ),

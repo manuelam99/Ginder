@@ -16,6 +16,7 @@ import 'package:tinder_app_flutter/util/utils.dart';
 import 'package:tinder_app_flutter/ui/screens/start_screen.dart';
 import 'package:tinder_app_flutter/ui/screens/register_sub_screens/add_phone_screen.dart';
 import 'package:tinder_app_flutter/ui/screens/register_sub_screens/add_platform.dart';
+import 'package:tinder_app_flutter/ui/screens/register_sub_screens/game_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String id = 'register_screen';
@@ -27,7 +28,7 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   final UserRegistration _userRegistration = UserRegistration();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final int _endScreenIndex = 5;
+  final int _endScreenIndex = 6;
   int _currentScreenIndex = 0;
   bool _isLoading = false;
   UserProvider _userProvider;
@@ -79,13 +80,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
         return PlatformScreen(
             onChanged: (value) => {_userRegistration.platform = value});
       case 3:
+        return GameScreen(
+            onChanged: (value) => {_userRegistration.game = value});
+      case 4:
         return AddPhotoScreen(
             onPhotoChanged: (value) =>
                 {_userRegistration.localProfilePhotoPath = value});
-      case 4:
+      case 5:
         return PhoneScreen(
             onChanged: (value) => {_userRegistration.phone = value});
-      case 5:
+      case 6:
         return EmailAndPasswordScreen(
             emailOnChanged: (value) => {_userRegistration.email = value},
             passwordOnChanged: (value) => {_userRegistration.password = value});
@@ -103,8 +107,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
       case 2:
         return (_userRegistration.platform != "");
       case 3:
-        return _userRegistration.localProfilePhotoPath.isNotEmpty;
+        return (_userRegistration.game != "");
       case 4:
+        return _userRegistration.localProfilePhotoPath.isNotEmpty;
+      case 5:
         final regExNumero = RegExp(r'^\d{10}$');
         return regExNumero.hasMatch(_userRegistration.phone);
       default:
@@ -121,8 +127,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
       case 2:
         return "Favor de elegir plataforma";
       case 3:
-        return "Foto no valida";
+        return "Favor de ingresar juego";
       case 4:
+        return "Foto no valida";
+      case 5:
         return "Telefono no valido";
       default:
         return "";

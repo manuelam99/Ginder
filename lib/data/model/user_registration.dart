@@ -6,4 +6,5 @@ class UserRegistration {
   String localProfilePhotoPath = '';
   String phone = '';
   String platform = "";
+  String game = "";
 }
